@@ -81,7 +81,17 @@ describe Game do
       state = [[10,0], [10,0], [10,0], [10,0], [10,0], [10,0], [10,0], [10,0], [10,0], [10,10,10] ]     
       Game.new.current_score(state).should == 300
     end
-
+    
+    it "checks for illegal frames and corrects" do
+      state = [[10, 4], [35, 0], [14,15]]
+      Game.new.current_score(state).should == 60
+    end
+    
+   it "checks for an illegal 10th frame and corrects" do
+      state = [[10,0], [10,0], [10,0], [10,0], [10,0], [10,0], [10,0], [10,0], [10,0], [10,66,8997] ]     
+      Game.new.current_score(state).should == 300
+    end
+    
   end
 end	
 	
