@@ -4,7 +4,7 @@ class Game
   
   def score(state)
 
-    framecount = 1
+    index = 1
     score = 0
     has_spare = false
     has_strike = false
@@ -12,7 +12,7 @@ class Game
 
     state.each do |rolls|
       
-      rolls = Frame.new(rolls, framecount).validate
+      rolls = Frame.new(rolls, index).validate
 
       frame_total = rolls.inject(0) { |x,n| x+n }
 
@@ -31,7 +31,7 @@ class Game
         end
 
       elsif (has_2_strikes)
-        if (framecount < 10)
+        if (index < 10)
           score += ((rolls[0] * 3) + (rolls[1] * 2))  
         else
           score += ((rolls[0] * 3) + (rolls[1] * 2) + rolls[2])  
@@ -55,7 +55,7 @@ class Game
         has_spare = true
       end
 
-      framecount += 1
+      index += 1
 
     end
     score
