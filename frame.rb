@@ -26,6 +26,10 @@ class Frame
     @rolls
   end
   
+  def index
+    @index
+  end
+  
   def total
     rolls.inject(0) { |x,n| x+n }
   end
@@ -36,5 +40,13 @@ class Frame
   
   def spare?
     total == 10 && !strike?
+  end
+  
+  def score_with_two_strikes
+    if (index < 10)
+      ((rolls[0] * 3) + (rolls[1] ? rolls[1] * 2 : 0))
+    else
+      ((rolls[0] * 3) + (rolls[1] * 2) + rolls[2])  
+    end
   end
 end

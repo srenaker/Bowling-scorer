@@ -106,6 +106,33 @@ describe Frame do
     end
   end
 
+  describe "score_with_two_strikes" do
+    # if (index < 10)
+    #   ((rolls[0] * 3) + (rolls[1] ? rolls[1] * 2 : 0))
+    # else
+    #   ((rolls[0] * 3) + (rolls[1] * 2) + rolls[2])  
+    # end
+
+    it "counts the first roll 3 times when that roll is a strike" do
+      Frame.new([10], 8).score_with_two_strikes.should == 30
+    end
+
+    it "counts the first roll 3 times when that roll is not a strike" do
+      Frame.new([7], 8).score_with_two_strikes.should == 21
+    end
+
+    it "counts the first roll 3 times and the second roll twice" do
+      Frame.new([1,2], 8).score_with_two_strikes.should == 7
+      Frame.new([3,4], 8).score_with_two_strikes.should == 17
+    end
+      
+    it "counts the first roll 3 times and the second roll twice and the third roll once" do
+      Frame.new([10,2,3], 10).score_with_two_strikes.should == 37
+    end
+
+    it "counts the first roll 3 times and the second roll twice and the third roll once even if he second roll is a 10" do
+      Frame.new([10,10,3], 10).score_with_two_strikes.should == 53
+    end
+
+  end
 end
-
-

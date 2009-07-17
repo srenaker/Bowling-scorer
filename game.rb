@@ -18,8 +18,8 @@ class Game
       if (has_spare)
         score += (f.total + f.rolls[0])
         has_spare = false
-      elsif (has_strike)
- 
+
+      elsif (has_strike) 
         score += (f.total * 2)
  
         if f.strike?
@@ -30,11 +30,7 @@ class Game
         end
 
       elsif (has_2_strikes)
-        if (index < 10)
-          score += ((f.rolls[0] * 3) + (f.rolls[1] ? f.rolls[1] * 2 : 0))  
-        else
-          score += ((f.rolls[0] * 3) + (f.rolls[1] * 2) + f.rolls[2])  
-        end 
+        score += f.score_with_two_strikes
         
         if f.strike?
           has_2_strikes = true
