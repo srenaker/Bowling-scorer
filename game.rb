@@ -12,7 +12,7 @@ class Game
 
     state.each do |frame|
       
-      frame = Frame.new(frame, framecount).validate_frame
+      frame = Frame.new(frame, framecount).validate
 
       frame_total = frame.inject(0) { |x,n| x+n }
 

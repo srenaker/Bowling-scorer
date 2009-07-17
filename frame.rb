@@ -6,7 +6,7 @@ class Frame
     
   end
 
-  def validate_frame
+  def validate
 
     # disallow rolls > 10    
 
