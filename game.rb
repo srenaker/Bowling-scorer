@@ -1,23 +1,18 @@
 class Game
   
-  def current_score(state)
+  def score(state)
 
     framecount = 1
     score = 0
     has_spare = false
     has_strike = false
     has_2_strikes = false
-    
 
     state.each do |frame|
       
       frame = validate_frame(frame, framecount)
 
-      if (framecount < 10)
-        frame_total = frame[0] + frame[1]
-      else
-        frame_total = frame[0] + frame[1] + frame[2]
-      end
+      frame_total = frame.inject(0) { |x,n| x+n }
 
       if (has_spare)        
         score += (frame_total + frame[0])
