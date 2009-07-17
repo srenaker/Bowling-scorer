@@ -18,6 +18,10 @@ class Frame
       @rolls[1] = 0 if (@rolls[0] == 10)
     end
     
+    nil
+  end
+  
+  def rolls
     @rolls
   end
   
