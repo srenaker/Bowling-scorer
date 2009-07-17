@@ -25,5 +25,8 @@ class Frame
     @rolls
   end
   
-  
+  def total
+    rolls.inject(0) { |x,n| x+n }
+  end
+
 end

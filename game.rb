@@ -15,7 +15,7 @@ class Game
       f = Frame.new(rolls, index)
       f.validate
 
-      frame_total = f.rolls.inject(0) { |x,n| x+n }
+      frame_total = f.total
 
       if (has_spare)        
         score += (frame_total + f.rolls[0])

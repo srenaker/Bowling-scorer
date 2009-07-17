@@ -23,6 +23,22 @@ describe Frame do
 
   end
 
+  describe "total" do
+    
+    it "adds up a frame with one roll" do
+      Frame.new([1], 1).total.should == 1
+    end
+
+    it "adds up a frame with two rolls" do
+      Frame.new([1,2], 1).total.should == 3
+    end
+    
+    it "adds up a frame with three rolls" do
+      Frame.new([1,2,3], 1).total.should == 6
+    end
+    
+  end
+
 end
 
 
