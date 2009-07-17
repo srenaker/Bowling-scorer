@@ -29,4 +29,7 @@ class Frame
     rolls.inject(0) { |x,n| x+n }
   end
 
+  def strike?
+    rolls[0] == 10
+  end
 end
