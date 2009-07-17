@@ -15,8 +15,6 @@ class Game
       f = Frame.new(rolls, index)
       f.validate
 
-      f.total = f.total
-
       if (has_spare)        
         score += (f.total + f.rolls[0])
         has_spare = false
