@@ -50,9 +50,9 @@ describe Frame do
     end
         
     it "allows three rolls in the 10th frame if the first two rolls add up to 10" do
-      f = Frame.new([10,3,5], 10)
+      f = Frame.new([7,3,5], 10)
       f.validate
-      f.rolls.should == [10,3,5]
+      f.rolls.should == [7,3,5]
     end
 
 
