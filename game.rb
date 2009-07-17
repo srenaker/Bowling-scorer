@@ -10,20 +10,20 @@ class Game
     has_strike = false
     has_2_strikes = false
 
-    state.each do |frame|
+    state.each do |rolls|
       
-      frame = Frame.new(frame, framecount).validate
+      rolls = Frame.new(rolls, framecount).validate
 
-      frame_total = frame.inject(0) { |x,n| x+n }
+      frame_total = rolls.inject(0) { |x,n| x+n }
 
       if (has_spare)        
-        score += (frame_total + frame[0])
+        score += (frame_total + rolls[0])
         has_spare = false
       elsif (has_strike)
  
         score += (frame_total * 2)
  
-        if (frame[0] == 10)
+        if (rolls[0] == 10)
           has_2_strikes = true
           has_strike = false
         else
@@ -32,12 +32,12 @@ class Game
 
       elsif (has_2_strikes)
         if (framecount < 10)
-          score += ((frame[0] * 3) + (frame[1] * 2))  
+          score += ((rolls[0] * 3) + (rolls[1] * 2))  
         else
-          score += ((frame[0] * 3) + (frame[1] * 2) + frame[2])  
+          score += ((rolls[0] * 3) + (rolls[1] * 2) + rolls[2])  
         end 
         
-        if (frame[0] == 10)
+        if (rolls[0] == 10)
           has_2_strikes = true
         else
           has_strike = false 
@@ -48,10 +48,10 @@ class Game
         score += frame_total
       end
 
-      if (frame[0] == 10 && has_2_strikes == false)
+      if (rolls[0] == 10 && has_2_strikes == false)
         has_strike = true
 
-      elsif (frame_total == 10 && frame[0] != 10)
+      elsif (frame_total == 10 && rolls[0] != 10)
         has_spare = true
       end
 
