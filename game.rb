@@ -31,7 +31,7 @@ class Game
 
       elsif (has_2_strikes)
         if (index < 10)
-          score += ((f.rolls[0] * 3) + (f.rolls[1] * 2))  
+          score += ((f.rolls[0] * 3) + (f.rolls[1] ? f.rolls[1] * 2 : 0))  
         else
           score += ((f.rolls[0] * 3) + (f.rolls[1] * 2) + f.rolls[2])  
         end 

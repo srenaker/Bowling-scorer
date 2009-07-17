@@ -15,7 +15,8 @@ class Frame
 
     # if first roll is a strike, discount 2nd roll, unless it's the 10th @rolls
     if (@index < 10)
-      @rolls[1] = 0 if (@rolls[0] == 10)
+      @rolls = [10] if (@rolls[0] == 10)
+      @rolls = [@rolls[0], @rolls[1]] if rolls.size > 2
     end
     
     nil
