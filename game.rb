@@ -15,14 +15,14 @@ class Game
       f = Frame.new(rolls, index)
       f.validate
 
-      frame_total = f.total
+      f.total = f.total
 
       if (has_spare)        
-        score += (frame_total + f.rolls[0])
+        score += (f.total + f.rolls[0])
         has_spare = false
       elsif (has_strike)
  
-        score += (frame_total * 2)
+        score += (f.total * 2)
  
         if (f.rolls[0] == 10)
           has_2_strikes = true
@@ -46,13 +46,13 @@ class Game
         end
     
       else  
-        score += frame_total
+        score += f.total
       end
 
       if (f.rolls[0] == 10 && has_2_strikes == false)
         has_strike = true
 
-      elsif (frame_total == 10 && f.rolls[0] != 10)
+      elsif (f.total == 10 && f.rolls[0] != 10)
         has_spare = true
       end
 
