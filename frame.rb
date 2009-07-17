@@ -33,4 +33,8 @@ class Frame
   def strike?
     rolls[0] == 10
   end
+  
+  def spare?
+    total == 10 && !strike?
+  end
 end

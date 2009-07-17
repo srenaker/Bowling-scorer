@@ -55,7 +55,6 @@ describe Frame do
       f.rolls.should == [7,3,5]
     end
 
-
   end
 
   describe "total" do
@@ -72,6 +71,39 @@ describe Frame do
       Frame.new([1,2,3], 1).total.should == 6
     end
     
+  end
+
+  describe "strike" do
+    it "is a strike if the first roll is 10" do
+      Frame.new([10], 8).should be_strike
+    end
+
+    it "isn't a strike if the first roll isn't 10" do
+      Frame.new([4,5], 8).should_not be_strike
+    end
+    
+    it "is a strike in the final frame if the first two rolls are both 10" do
+      Frame.new([10, 10, 0], 10).should be_strike
+    end
+    
+    it "is a strike in the final frame if the first three rolls are 10" do
+      Frame.new([10, 10, 10], 10).should be_strike
+    end
+    
+  end
+
+  describe "spare" do
+    it "isn't a spare if it's a strike" do
+      Frame.new([10], 8).should_not be_spare
+    end
+
+    it "is a spare if the total is 10" do
+      Frame.new([6,4], 8).should be_spare
+    end
+
+    it "isn't a spare if the total isn't 10" do
+      Frame.new([4,5], 8).should_not be_spare
+    end
   end
 
 end

@@ -36,7 +36,7 @@ class Game
           score += ((f.rolls[0] * 3) + (f.rolls[1] * 2) + f.rolls[2])  
         end 
         
-        if (f.rolls[0] == 10)
+        if f.strike?
           has_2_strikes = true
         else
           has_strike = false 
@@ -47,10 +47,10 @@ class Game
         score += f.total
       end
 
-      if (f.rolls[0] == 10 && has_2_strikes == false)
+      if (f.strike? && has_2_strikes == false)
         has_strike = true
 
-      elsif (f.total == 10 && f.rolls[0] != 10)
+      elsif f.spare?
         has_spare = true
       end
 
